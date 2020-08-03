@@ -20,10 +20,8 @@ public class GraphCounter {
         else {
             int size = graphs.size();
             boolean isNewGraph = false;
-
             // looking for graph with the same vertex
             for (int i = 0; i < size; i++) {
-
                 //if exist vertices will be add to graph, else will be created new one
                 if (graphs.get(i).isVerticesExistInGraph(verticesToCheck)) {
                     graphs.get(i).addVert(verticesToCheck);
@@ -33,7 +31,6 @@ public class GraphCounter {
                     isNewGraph = true;
                 }
             }
-
             if (isNewGraph)
                 graphs.add(new Graph(verticesToCheck));
         }

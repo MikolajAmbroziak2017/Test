@@ -9,11 +9,9 @@ public class ListOperation {
     private ArrayList<Integer> template;
 
     public ListOperation(ArrayList args) {
-            this.modifiedList = sortList(args);
+        this.modifiedList = sortList(args);
         this.template = new ArrayList<Integer>();
     }
-
-
 
     //count how many value are different
     public int getDistinct() {
@@ -31,7 +29,6 @@ public class ListOperation {
         if (optionalInteger.isPresent())
             return new int[]{value, optionalInteger.get()};
         return new int[]{value, 0};
-
     }
 
     //Creating TASK 2 String
@@ -84,6 +81,7 @@ public class ListOperation {
     public int getMax() {
         return modifiedList.get(modifiedList.size() - 1);
     }
+
     public ArrayList<Integer> getmodifiedList() {
         return modifiedList;
     }

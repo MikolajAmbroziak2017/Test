@@ -41,7 +41,6 @@ public class DevtestApplication {
         else
             inputType = InputType.STATIC;
 
-
         //selection of input values ​​depending on the type of inputs default from file
         if (inputType == InputType.PARAMETER)
             inputIntegers = getInputList(toArrayParser(args));
@@ -67,7 +66,7 @@ public class DevtestApplication {
         System.out.println("TASK 3:");
         fileReader(taskThreeInputPath);
         //Create a object of class that manages Graph list
-        GraphCounter graphCounter=new GraphCounter();
+        GraphCounter graphCounter = new GraphCounter();
         //loop around all input lines
         for (int[] i : inputVertices) {
             graphCounter.setNewVertices(i);
@@ -75,8 +74,9 @@ public class DevtestApplication {
         //firstVerticleAdd function take first vertices from input file
         // and if is necessary one time overubs graph
         graphCounter.firstVerticleAdd(firstInput);
+
         //coutGraph() sum every object in graph list
-        System.out.println("Graph from input: "+graphCounter.countGraph());
+        System.out.println("Graph from input: " + graphCounter.countGraph());
 
     }
 
@@ -94,14 +94,12 @@ public class DevtestApplication {
                 try {
                     File file = new File(filePath);
                     Scanner in = new Scanner(file);
-
                     while (in.hasNext())
                         inputArray.add(in.nextInt());
                 } catch (Exception e) {
                     System.out.println(e);
                     return false;
                 }
-
                 inputIntegers = inputArray;
             }
             //fileReader supports task 3. input file
