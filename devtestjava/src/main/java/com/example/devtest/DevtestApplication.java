@@ -66,12 +66,16 @@ public class DevtestApplication {
         //TASK 3
         System.out.println("TASK 3:");
         fileReader(taskThreeInputPath);
+        //Create a object of class that manages Graph list
         GraphCounter graphCounter=new GraphCounter();
+        //loop around all input lines
         for (int[] i : inputVertices) {
-            System.out.println(i[0]+" "+i[1]);
             graphCounter.setNewVertices(i);
         }
-       // graphCounter.firstVerticleAdd(firstInput);
+        //firstVerticleAdd function take first vertices from input file
+        // and if is necessary one time overubs graph
+        graphCounter.firstVerticleAdd(firstInput);
+        //coutGraph() sum every object in graph list
         System.out.println("Graph from input: "+graphCounter.countGraph());
 
     }
@@ -100,7 +104,7 @@ public class DevtestApplication {
 
                 inputIntegers = inputArray;
             }
-            //fileReader supports task 3 input file
+            //fileReader supports task 3. input file
             if (filePath == taskThreeInputPath) {
                 try {
                     File file = new File(filePath);

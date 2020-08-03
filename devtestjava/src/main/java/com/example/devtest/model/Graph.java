@@ -11,6 +11,10 @@ public class Graph {
         graphVertices.add(ver[1]);
     }
 
+    public Graph(ArrayList<Integer> graphVertices) {
+        this.graphVertices = graphVertices;
+    }
+
     public ArrayList<Integer> getGraphVertices() {
         return graphVertices;
     }
@@ -20,7 +24,7 @@ public class Graph {
     }
 
     public boolean isVerticesExistInGraph(int[] vertices) {
-        for (int i=0;i<graphVertices.size();i++) {
+        for (int i = 0; i < graphVertices.size(); i++) {
             if (graphVertices.get(i) == vertices[0])
                 return true;
             if (graphVertices.get(i) == vertices[1])
@@ -29,13 +33,21 @@ public class Graph {
         return false;
     }
 
-        public boolean firstVertIsInGraph (int firstVert){
-            if (graphVertices.stream().filter(integer -> integer == firstVert).findFirst().isPresent())
-                return true;
-            return false;
-        }
-        public void addVert(int[] vertices){
-            graphVertices.add(vertices[0]);
-            graphVertices.add(vertices[1]);
-        }
+    public boolean isfirstVertInGraph(int firstVert) {
+        if (graphVertices.stream().anyMatch(integer -> integer == firstVert))
+            return true;
+        return false;
     }
+
+    public void addVert(int[] vertices) {
+        graphVertices.add(vertices[0]);
+        graphVertices.add(vertices[1]);
+    }
+
+    @Override
+    public String toString() {
+        return "Graph{" +
+                "graphVertices=" + graphVertices +
+                '}';
+    }
+}

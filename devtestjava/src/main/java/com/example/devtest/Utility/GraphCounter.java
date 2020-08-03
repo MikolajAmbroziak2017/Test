@@ -13,33 +13,46 @@ public class GraphCounter {
     }
 
     public void setNewVertices(int[] verticesToCheck) {
+        //if it's first vertices to check and there is no graph
+        // object in list, checked vertices become a first graph
         if (graphs.size() == 0)
             graphs.add(new Graph(verticesToCheck));
         else {
-            for (int i = 0; i < graphs.size(); i++) {
+            int size = graphs.size();
+            boolean isNewGraph = false;
+
+            // looking for graph with the same vertex
+            for (int i = 0; i < size; i++) {
+
+                //if exist vertices will be add to graph, else will be created new one
                 if (graphs.get(i).isVerticesExistInGraph(verticesToCheck)) {
                     graphs.get(i).addVert(verticesToCheck);
+                    isNewGraph = false;
                     break;
-                }else{
-                    graphs.add(new Graph(verticesToCheck));
-
+                } else {
+                    isNewGraph = true;
                 }
             }
+
+            if (isNewGraph)
+                graphs.add(new Graph(verticesToCheck));
         }
     }
 
     public void firstVerticleAdd(int firstVer) {
         ArrayList<Integer> template = new ArrayList<>();
+        ArrayList<Graph> graphsToDelete = new ArrayList<>();
         for (Graph g : graphs) {
-            if (g.firstVertIsInGraph(firstVer)) {
-                if (g.getGraphVertices().get(0) == firstVer)
-                    template.add(g.getGraphVertices().get(1));
-                if (g.getGraphVertices().get(1) == firstVer)
-                    template.add(g.getGraphVertices().get(0));
-                graphs.remove(g);
+
+            if (g.isfirstVertInGraph(firstVer)) {
+                g.getGraphVertices().forEach(integer -> template.add(integer));
+                graphsToDelete.add(g);
             }
-            template.add(firstVer);
         }
+        for (Graph g : graphsToDelete) {
+            graphs.remove(g);
+        }
+        graphs.add(new Graph(template));
     }
 
     public int countGraph() {
